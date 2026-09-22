@@ -1,0 +1,110 @@
+services:
+  a:
+    image: frrouting/frr:latest
+    container_name: router-a
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    sysctls:
+      net.ipv4.ip_forward: 1
+    stdin_open: true
+    tty: true
+    networks:
+      a_b_c:
+        ipv4_address: 192.168.7.1
+      a_d_e:
+        ipv4_address: 192.168.9.1
+
+  b:
+    image: frrouting/frr:latest
+    container_name: router-b
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    sysctls:
+      net.ipv4.ip_forward: 1
+    stdin_open: true
+    tty: true
+    networks:
+      a_b_c:
+        ipv4_address: 192.168.7.2
+      b_e:
+        ipv4_address: 192.100.0.1
+
+  c:
+    image: frrouting/frr:latest
+    container_name: router-c
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    sysctls:
+      net.ipv4.ip_forward: 1
+    stdin_open: true
+    tty: true
+    networks:
+      a_b_c:
+        ipv4_address: 192.168.7.3
+      c_d:
+        ipv4_address: 192.168.8.1
+
+  d:
+    image: frrouting/frr:latest
+    container_name: router-d
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    sysctls:
+      net.ipv4.ip_forward: 1
+    stdin_open: true
+    tty: true
+    networks:
+      c_d:
+        ipv4_address: 192.168.8.2
+      a_d_e:
+        ipv4_address: 192.168.9.2
+
+  e:
+    image: frrouting/frr:latest
+    container_name: router-e
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    sysctls:
+      net.ipv4.ip_forward: 1
+    stdin_open: true
+    tty: true
+    networks:
+      a_d_e:
+        ipv4_address: 192.168.9.3
+      b_e:
+        ipv4_address: 192.100.0.2
+
+
+networks:
+  a_b_c:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.7.0/24
+          gateway: 192.168.7.254
+
+  c_d:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.8.0/24
+          gateway: 192.168.8.254
+
+  a_d_e:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.9.0/24
+          gateway: 192.168.9.254
+
+  b_e:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.100.0.0/24
+          gateway: 192.100.0.254
