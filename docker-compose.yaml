@@ -5,13 +5,16 @@ services:
     cap_add:
       - NET_ADMIN
       - NET_RAW
+      - SYS_ADMIN
     sysctls:
       net.ipv4.ip_forward: 1
     stdin_open: true
     tty: true
 
     volumes:
-      - ./routers/a:/etc/frr
+      - ./routers/a/daemons:/etc/frr/daemons
+      - ./routers/a/frr.conf:/etc/frr/frr.conf
+      - ./routers/a/vtysh.conf:/etc/frr/vtysh.conf
 
     networks:
       a_b_c:
@@ -25,13 +28,16 @@ services:
     cap_add:
       - NET_ADMIN
       - NET_RAW
+      - SYS_ADMIN
     sysctls:
       net.ipv4.ip_forward: 1
     stdin_open: true
     tty: true
 
     volumes:
-      - ./routers/b:/etc/frr
+      - ./routers/b/daemons:/etc/frr/daemons
+      - ./routers/b/frr.conf:/etc/frr/frr.conf
+      - ./routers/b/vtysh.conf:/etc/frr/vtysh.conf
 
     networks:
       a_b_c:
@@ -45,13 +51,16 @@ services:
     cap_add:
       - NET_ADMIN
       - NET_RAW
+      - SYS_ADMIN
     sysctls:
       net.ipv4.ip_forward: 1
     stdin_open: true
     tty: true
 
     volumes:
-      - ./routers/c:/etc/frr
+      - ./routers/c/daemons:/etc/frr/daemons
+      - ./routers/c/frr.conf:/etc/frr/frr.conf
+      - ./routers/c/vtysh.conf:/etc/frr/vtysh.conf
 
     networks:
       a_b_c:
@@ -65,13 +74,16 @@ services:
     cap_add:
       - NET_ADMIN
       - NET_RAW
+      - SYS_ADMIN
     sysctls:
       net.ipv4.ip_forward: 1
     stdin_open: true
     tty: true
 
     volumes:
-      - ./routers/d:/etc/frr
+      - ./routers/d/daemons:/etc/frr/daemons
+      - ./routers/d/frr.conf:/etc/frr/frr.conf
+      - ./routers/d/vtysh.conf:/etc/frr/vtysh.conf
 
     networks:
       c_d:
@@ -85,13 +97,16 @@ services:
     cap_add:
       - NET_ADMIN
       - NET_RAW
+      - SYS_ADMIN
     sysctls:
       net.ipv4.ip_forward: 1
     stdin_open: true
     tty: true
 
     volumes:
-      - ./routers/e:/etc/frr
+      - ./routers/e/daemons:/etc/frr/daemons
+      - ./routers/e/frr.conf:/etc/frr/frr.conf
+      - ./routers/e/vtysh.conf:/etc/frr/vtysh.conf
 
     networks:
       a_d_e:

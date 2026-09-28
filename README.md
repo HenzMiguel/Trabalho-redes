@@ -6,4 +6,4 @@ Trabalho de redes comparação com algoritmos de roteamento.
 
 algoritmos:
 - RIP
-- BGP
+- OSPF
