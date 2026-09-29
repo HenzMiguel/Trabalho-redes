@@ -1,6 +1,7 @@
 services:
   a:
-    image: frrouting/frr:latest
+    build: .
+    image: trabalho-redes-frr:local
     container_name: router-a
     cap_add:
       - NET_ADMIN
@@ -23,7 +24,8 @@ services:
         ipv4_address: 192.168.9.1
 
   b:
-    image: frrouting/frr:latest
+    build: .
+    image: trabalho-redes-frr:local
     container_name: router-b
     cap_add:
       - NET_ADMIN
@@ -46,7 +48,8 @@ services:
         ipv4_address: 192.100.0.1
 
   c:
-    image: frrouting/frr:latest
+    build: .
+    image: trabalho-redes-frr:local
     container_name: router-c
     cap_add:
       - NET_ADMIN
@@ -69,7 +72,8 @@ services:
         ipv4_address: 192.168.8.1
 
   d:
-    image: frrouting/frr:latest
+    build: .
+    image: trabalho-redes-frr:local
     container_name: router-d
     cap_add:
       - NET_ADMIN
@@ -92,7 +96,8 @@ services:
         ipv4_address: 192.168.9.2
 
   e:
-    image: frrouting/frr:latest
+    build: .
+    image: trabalho-redes-frr:local
     container_name: router-e
     cap_add:
       - NET_ADMIN
