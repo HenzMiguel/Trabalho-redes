@@ -4,7 +4,36 @@ Comparação de protocolos de roteamento na mesma topologia Docker/FRR.
 
 ## Topologia
 
-Os cinco roteadores formam quatro redes: `192.168.7.0/24`, `192.168.8.0/24`, `192.168.9.0/24` e `192.100.0.0/24`. O arquivo atual em `routers/` configura RIP. Para comparar OSPF e o algoritmo próprio, mantenha a mesma topologia, os mesmos intervalos de coleta e os mesmos testes de ping.
+Os cinco roteadores formam quatro redes: `192.168.7.0/24`, `192.168.8.0/24`, `192.168.9.0/24` e `192.100.0.0/24`. A topologia fica em `docker-compose.yaml`; as configurações FRR ficam isoladas em `routers/rip/` e `routers/ospf/`. Assim, somente um protocolo é montado nos roteadores a cada execução.
+
+## Executar RIP ou OSPF
+
+Use o lançador Python a partir da raiz do repositório. Ele seleciona o arquivo `.env` correto, valida que os cinco roteadores possuem os três arquivos FRR e chama o Docker Compose.
+
+```bash
+# Criar/recriar a imagem e iniciar RIP em segundo plano
+python3 run_topology.py rip up --build --detach
+
+# Encerrar RIP antes de trocar de protocolo
+python3 run_topology.py rip down
+
+# Iniciar OSPF com a mesma topologia
+python3 run_topology.py ospf up --build --detach
+```
+
+Outras ações disponíveis são `restart`, `logs` e `config`:
+
+```bash
+python3 run_topology.py ospf logs
+python3 run_topology.py ospf config
+```
+
+Também é possível chamar o Compose diretamente, quando necessário:
+
+```bash
+docker compose --env-file .env.rip up --build
+docker compose --env-file .env.ospf up --build
+```
 
 ## Métricas e gráficos
 
@@ -13,7 +42,7 @@ O coletor mede, por roteador, rotas IPv4 instaladas, pacotes e bytes de controle
 Antes de coletar, inicie a topologia e espere o protocolo estabilizar:
 
 ```bash
-docker compose up -d --build
+python3 run_topology.py rip up --build --detach
 docker exec router-a which tcpdump
 python3 metrics/collect.py --protocol rip
 ```

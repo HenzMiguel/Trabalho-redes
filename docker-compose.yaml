@@ -13,9 +13,9 @@ services:
     tty: true
 
     volumes:
-      - ./routers/a/daemons:/etc/frr/daemons
-      - ./routers/a/frr.conf:/etc/frr/frr.conf
-      - ./routers/a/vtysh.conf:/etc/frr/vtysh.conf
+      - ./routers/${ROUTING_PROTOCOL}/a/daemons:/etc/frr/daemons:ro
+      - ./routers/${ROUTING_PROTOCOL}/a/frr.conf:/etc/frr/frr.conf:ro
+      - ./routers/${ROUTING_PROTOCOL}/a/vtysh.conf:/etc/frr/vtysh.conf:ro
 
     networks:
       a_b_c:
@@ -37,9 +37,9 @@ services:
     tty: true
 
     volumes:
-      - ./routers/b/daemons:/etc/frr/daemons
-      - ./routers/b/frr.conf:/etc/frr/frr.conf
-      - ./routers/b/vtysh.conf:/etc/frr/vtysh.conf
+      - ./routers/${ROUTING_PROTOCOL}/b/daemons:/etc/frr/daemons:ro
+      - ./routers/${ROUTING_PROTOCOL}/b/frr.conf:/etc/frr/frr.conf:ro
+      - ./routers/${ROUTING_PROTOCOL}/b/vtysh.conf:/etc/frr/vtysh.conf:ro
 
     networks:
       a_b_c:
@@ -61,9 +61,9 @@ services:
     tty: true
 
     volumes:
-      - ./routers/c/daemons:/etc/frr/daemons
-      - ./routers/c/frr.conf:/etc/frr/frr.conf
-      - ./routers/c/vtysh.conf:/etc/frr/vtysh.conf
+      - ./routers/${ROUTING_PROTOCOL}/c/daemons:/etc/frr/daemons:ro
+      - ./routers/${ROUTING_PROTOCOL}/c/frr.conf:/etc/frr/frr.conf:ro
+      - ./routers/${ROUTING_PROTOCOL}/c/vtysh.conf:/etc/frr/vtysh.conf:ro
 
     networks:
       a_b_c:
@@ -85,9 +85,9 @@ services:
     tty: true
 
     volumes:
-      - ./routers/d/daemons:/etc/frr/daemons
-      - ./routers/d/frr.conf:/etc/frr/frr.conf
-      - ./routers/d/vtysh.conf:/etc/frr/vtysh.conf
+      - ./routers/${ROUTING_PROTOCOL}/d/daemons:/etc/frr/daemons:ro
+      - ./routers/${ROUTING_PROTOCOL}/d/frr.conf:/etc/frr/frr.conf:ro
+      - ./routers/${ROUTING_PROTOCOL}/d/vtysh.conf:/etc/frr/vtysh.conf:ro
 
     networks:
       c_d:
@@ -109,9 +109,9 @@ services:
     tty: true
 
     volumes:
-      - ./routers/e/daemons:/etc/frr/daemons
-      - ./routers/e/frr.conf:/etc/frr/frr.conf
-      - ./routers/e/vtysh.conf:/etc/frr/vtysh.conf
+      - ./routers/${ROUTING_PROTOCOL}/e/daemons:/etc/frr/daemons:ro
+      - ./routers/${ROUTING_PROTOCOL}/e/frr.conf:/etc/frr/frr.conf:ro
+      - ./routers/${ROUTING_PROTOCOL}/e/vtysh.conf:/etc/frr/vtysh.conf:ro
 
     networks:
       a_d_e:
