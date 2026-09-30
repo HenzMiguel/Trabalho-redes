@@ -1,5 +1,3 @@
 .venv
-metrics/results/*.csv
-metrics/graphs/*.png
 __pycache__/
 *.py[cod]
