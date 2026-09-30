@@ -1,7 +1,6 @@
 services:
   a:
-    build: .
-    image: trabalho-redes-frr:local
+    image: ${ROUTER_IMAGE:?Defina ROUTER_IMAGE no arquivo de ambiente selecionado}
     container_name: router-a
     cap_add:
       - NET_ADMIN
@@ -24,8 +23,7 @@ services:
         ipv4_address: 192.168.9.1
 
   b:
-    build: .
-    image: trabalho-redes-frr:local
+    image: ${ROUTER_IMAGE:?Defina ROUTER_IMAGE no arquivo de ambiente selecionado}
     container_name: router-b
     cap_add:
       - NET_ADMIN
@@ -48,8 +46,7 @@ services:
         ipv4_address: 192.100.0.1
 
   c:
-    build: .
-    image: trabalho-redes-frr:local
+    image: ${ROUTER_IMAGE:?Defina ROUTER_IMAGE no arquivo de ambiente selecionado}
     container_name: router-c
     cap_add:
       - NET_ADMIN
@@ -72,8 +69,7 @@ services:
         ipv4_address: 192.168.8.1
 
   d:
-    build: .
-    image: trabalho-redes-frr:local
+    image: ${ROUTER_IMAGE:?Defina ROUTER_IMAGE no arquivo de ambiente selecionado}
     container_name: router-d
     cap_add:
       - NET_ADMIN
@@ -96,8 +92,7 @@ services:
         ipv4_address: 192.168.9.2
 
   e:
-    build: .
-    image: trabalho-redes-frr:local
+    image: ${ROUTER_IMAGE:?Defina ROUTER_IMAGE no arquivo de ambiente selecionado}
     container_name: router-e
     cap_add:
       - NET_ADMIN

@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-PROTOCOLS = ("rip", "ospf")
+PROTOCOLS = ("rip", "ospf", "custom")
 ROUTERS = ("a", "b", "c", "d", "e")
 
 

@@ -11,7 +11,8 @@ Os cinco roteadores formam quatro redes: `192.168.7.0/24`, `192.168.8.0/24`, `19
 Use o lançador Python a partir da raiz do repositório. Ele seleciona o arquivo `.env` correto, valida que os cinco roteadores possuem os três arquivos FRR e chama o Docker Compose.
 
 ```bash
-# Criar/recriar a imagem e iniciar RIP em segundo plano
+docker build -t trabalho-redes-frr:local .
+
 python3 run_topology.py rip up --build --detach
 
 # Encerrar RIP antes de trocar de protocolo
