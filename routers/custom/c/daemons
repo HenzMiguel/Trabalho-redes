@@ -1,7 +1,7 @@
 bgpd=no
-ospfd=yes
+ospfd=no
 ospf6d=no
-ripd=no
+ripd=yes
 ripngd=no
 isisd=no
 pimd=no
