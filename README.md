@@ -52,7 +52,7 @@ Repita exatamente a mesma coleta após ativar cada configuração OSPF e do algo
 
 ```bash
 python3 metrics/collect.py --protocol ospf
-python3 metrics/collect.py --protocol custom --custom-filter 'udp port 9000'
+python3 metrics/collect.py --protocol custom --custom-filter 'udp port 5200'
 ```
 
 O filtro do último comando deve corresponder ao tráfego real do algoritmo próprio. `tcpdump` precisa estar disponível na imagem FRR. Os CSVs ficam em `metrics/results/` e são sobrescritos por uma nova execução do mesmo protocolo.
