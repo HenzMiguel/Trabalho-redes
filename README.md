@@ -2,6 +2,9 @@
 
 Comparação de protocolos de roteamento na mesma topologia Docker/FRR.
 
+https://github.com/user-attachments/assets/e6a187d3-04a8-4300-b452-d905afe7ab32
+
+
 ## Topologia
 
 Os cinco roteadores formam quatro redes: `192.168.7.0/24`, `192.168.8.0/24`, `192.168.9.0/24` e `192.100.0.0/24`. A topologia fica em `docker-compose.yaml`; as configurações FRR ficam isoladas em `routers/rip/` e `routers/ospf/`. Assim, somente um protocolo é montado nos roteadores a cada execução.
