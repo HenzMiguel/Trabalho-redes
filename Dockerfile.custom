@@ -1,0 +1,12 @@
+FROM frrouting/frr:latest
+
+# A imagem oficial usa Alpine Linux.
+USER root
+RUN apk add --no-cache tcpdump python3
+
+# Copia o daemon de roteamento baseado em latência
+COPY latency_router.py /usr/local/bin/latency_router.py
+
+# Substitui o entrypoint do FRR pelo nosso daemon Python.
+# O tini garante tratamento correto de sinais e processos filhos (ping).
+ENTRYPOINT ["/sbin/tini", "--", "python3", "/usr/local/bin/latency_router.py"]
